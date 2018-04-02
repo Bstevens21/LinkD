@@ -1,24 +1,22 @@
 {
   "development": {
-    "username": "root",
-    "password": "dbpass",
-    "database": "linkd-dev",
+    "username": "pow",
+    "password": null,
+    "database": "LinkD",
     "host": "127.0.0.1",
-    "port": 5432,
     "dialect": "postgres"
   },
   "test": {
-    "username": "root",
-    "password": "dbpass",
-    "database": "linkd-test",
+    "username": "pow",
+    "password": null,
+    "database": "LinkD",
     "host": "127.0.0.1",
-    "port": 5432,
     "dialect": "postgres"
   },
   "production": {
-    "username": "root",
+    "username": "pow",
     "password": null,
-    "database": "database_production",
+    "database": "LinkD",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
