@@ -3,39 +3,39 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('posts', {
       title: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       startTime: {
-        type: DataTypes.DATE,
+        type: Sequelize.DATE,
         allowNull: false,
       },
       duration: {
-        type: DataTypes.TIME,
+        type: Sequelize.TIME,
         allowNull: false,
       },
       location: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       requirements: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
       },
       success: {
-        type: DataTypes.BOOLEAN,
+        type: Sequelize.BOOLEAN,
       },
       expired: {
-        type: DataTypes.BOOLEAN,
+        type: Sequelize.BOOLEAN,
       },
       notes: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
       },
       body: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       category: {
-        type: DataTypes.ENUM,
+        type: Sequelize.ENUM,
         values: ['sport','event','game','food','outdoor','club'],
         allowNull: false,
       },
