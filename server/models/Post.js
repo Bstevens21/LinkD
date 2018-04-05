@@ -41,6 +41,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   }, {});
+
   Post.associate = function(models) {
     //get owner with post.getOwner()
     Post.belongsTo(models.User,{
