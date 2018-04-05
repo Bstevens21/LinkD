@@ -1,9 +1,9 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('user', {
+  const User = sequelize.define('User', {
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
       unique: true,
       validate: {
         isEmail: true,
@@ -11,33 +11,33 @@ module.exports = (sequelize, DataTypes) => {
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     salt: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     role: {
       type: DataTypes.ENUM,
       values: ['new','verified','inactive','deleted','admin'],
       defaultValue: 'new',
-      allowNull: false,
+      // allowNull: false,
     },
   });
   //get posts with user.getPosts()
-  User.associate = (models) => {
-    User.hasMany(models.Post, {
-      as: 'posts',
-      onDelete: 'cascade',
-      hooks: true,
-    });
-    //get notifications with user.getNotifications()
-    User.hasMany(models.Notification, {
-      as: 'notifications',
-      onDelete: 'cascade',
-      hooks: true,
-    });
-  };
+  // User.associate = (models) => {
+  //   User.hasMany(models.Post, {
+  //     as: 'posts',
+  //     onDelete: 'cascade',
+  //     hooks: true,
+  //   });
+  //   //get notifications with user.getNotifications()
+  //   User.hasMany(models.Notification, {
+  //     as: 'notifications',
+  //     onDelete: 'cascade',
+  //     hooks: true,
+  //   });
+  // };
 
   return User;
 };

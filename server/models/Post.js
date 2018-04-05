@@ -41,13 +41,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   }, {});
-  Post.associate = function(models) {
-    Post.belongsTo(models.User);
-    //get interesteds with post.getInteresteds()
-    //add interesteds with post.addInteresteds(interested)
-    Post.hasMany(models.User, {
-      as: interesteds,
-    });
-  };
+  // Post.associate = function(models) {
+  //   Post.belongsTo(models.User);
+  //   //get interesteds with post.getInteresteds()
+  //   //add interesteds with post.addInteresteds(interested)
+  //   Post.hasMany(models.User, {
+  //     as: interesteds,
+  //   });
+  // };
   return Post;
 };

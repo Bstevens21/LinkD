@@ -5,5 +5,5 @@ module.exports = (app) => {
     message: 'Welcome to the Linkd API!',
   }));
 
-  app.post('/api/createUser', usersController.create);
+  app.post('/api/createUser', userController.create);
 };
