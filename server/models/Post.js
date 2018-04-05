@@ -42,7 +42,10 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   Post.associate = function(models) {
-    Post.belongsTo(models.User);
+    //get owner with post.getOwner()
+    Post.belongsTo(models.User,{
+      as:owner,
+    });
     //get interesteds with post.getInteresteds()
     //add interesteds with post.addInteresteds(interested)
     Post.hasMany(models.User, {
