@@ -1,46 +1,57 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Post = sequelize.define('post', {
-    title: {
+  const Post = sequelize.define('Post', {
+    postTitle: {
+      field: 'title',
       type: DataTypes.STRING,
       allowNull: false,
     },
-    startTime: {
+    postStartTime: {
+      field: 'startTime',
       type: DataTypes.DATE,
       allowNull: false,
     },
-    duration: {
+    postDuration: {
+      field: 'duration',
       type: DataTypes.TIME,
       allowNull: false,
     },
-    location: {
+    postLocation: {
+      field: 'location',
       type: DataTypes.STRING,
       allowNull: false,
     },
     //requirements field is for "I'm looking for people with x, y, z..."
-    requirements: {
+    postRequirements: {
+      field: 'requirements',
       type: DataTypes.STRING,
     },
     //success is for asking the user if his activity was successful (post-activity)
-    success: {
+    postSuccess: {
+      field: 'success',
       type: DataTypes.BOOLEAN,
     },
-    expired: {
+    postExpired: {
+      field: 'expired',
       type: DataTypes.BOOLEAN,
     },
-    notes: {
+    postNotes: {
+      field: 'notes',
       type: DataTypes.STRING,
     },
-    body: {
+    postBody: {
+      field: 'body',
       type: DataTypes.STRING,
       allowNull: false,
     },
-    category: {
+    postCategory: {
+      field: 'category',
       type: DataTypes.ENUM,
       values: ['sport','event','game','food','outdoor','club'],
+      defaultValue: 'game',
       allowNull: false,
     },
-  }, {});
+  });
 
   // Post.associate = function(models) {
   //   //get owner with post.getOwner()
