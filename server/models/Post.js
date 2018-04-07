@@ -42,16 +42,16 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
 
-  Post.associate = function(models) {
-    //get owner with post.getOwner()
-    Post.belongsTo(models.User,{
-      as:owner,
-    });
-    //get interesteds with post.getInteresteds()
-    //add interesteds with post.addInteresteds(interested)
-    Post.hasMany(models.User, {
-      as: interesteds,
-    });
-  };
+  // Post.associate = function(models) {
+  //   //get owner with post.getOwner()
+  //   Post.belongsTo(models.User,{
+  //     as:owner,
+  //   });
+  //   //get interesteds with post.getInteresteds()
+  //   //add interesteds with post.addInteresteds(interested)
+  //   Post.hasMany(models.User, {
+  //     as: interesteds,
+  //   });
+  // };
   return Post;
 };

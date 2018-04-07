@@ -3,32 +3,74 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  state = {
-    response: ''
-  };
-  componentDidMount() {
-    this.callApi()
-      .then(res => this.setState({ response: res.message }))
-      .catch(err => console.log(err));
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: ''
+    };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  callApi = async () => {
-    const response = await fetch('/hello');
-    const body = await response.json();
-    if (response.status !== 200) throw Error(body.message);
-    return body;
-  };
+  
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
+  handleSubmit(event) {
+    alert('hi' + this.state.email + this.state.password);
+    event.preventDefault();
+    console.log('we made it');
+    fetch('/api/createUser', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        mail: this.state.email,
+        pass: this.state.password,
+      })
+  })
+    // fetch('/api/createUser', {
+    //   mehtod: 'POST'
+    // })
+    // .then(response => response.json())
+    // .then(data => this.setState({email: this.state.email, password: this.state.password}))
+    // .catch(e => console.log('error', e));
+  }
+
+  
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p>{this.state.response}</p>
-        <p className="App-intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Email:
+          <input
+            name="email"
+            type="email"
+            checked={this.state.email}
+            onChange={this.handleInputChange} />
+        </label>
+        <br />
+        <label>
+          Password:
+          <input
+            name="password"
+            type="text"
+            value={this.state.password}
+            onChange={this.handleInputChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
     );
   }
 }

@@ -1,7 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    email: {
+    userEmail: {
+      field: 'email',
       type: DataTypes.STRING,
       // allowNull: false,
       unique: true,
@@ -10,15 +11,18 @@ module.exports = (sequelize, DataTypes) => {
         msg: "Email is invalid.",
       }
     },
-    password: {
+    userPass: {
+      field: 'password',
       type: DataTypes.STRING,
       // allowNull: false,
     },
-    salt: {
+    userSalt: {
+      field: 'salt',
       type: DataTypes.STRING,
       // allowNull: false,
     },
-    role: {
+    userRole: {
+      field: 'role',
       type: DataTypes.ENUM,
       values: ['new','verified','inactive','deleted','admin'],
       defaultValue: 'new',
