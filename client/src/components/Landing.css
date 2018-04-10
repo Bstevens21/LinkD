@@ -1,0 +1,29 @@
+.container{
+    margin-bottom:40px;
+}
+.wrapper{
+    width: 60%;
+    margin: 0 auto;
+}
+
+.jumbotron{
+    margin-top:20%;   
+}
+
+.btn-wrapper{
+    margin-top: 2em;
+    margin: 0 auto;
+    padding: 15px 15px;
+    margin-bottom: 2em;
+}
+
+.btn-primary{
+    width: 200px;
+    height: 40px;
+    border:none;
+    border-radius:20px;
+    background-color:#e3582a;
+    float:right;
+    margin-bottom:50px;
+    
+}
