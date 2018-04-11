@@ -14,7 +14,6 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
-
   handleInputChange(event) {
     const target = event.target;
     const value = target.value;
@@ -40,15 +39,8 @@ class App extends Component {
         pass: this.state.password,
       })
   })
-    // fetch('/api/createUser', {
-    //   mehtod: 'POST'
-    // })
-    // .then(response => response.json())
-    // .then(data => this.setState({email: this.state.email, password: this.state.password}))
-    // .catch(e => console.log('error', e));
-  }
+}
 
-  
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
