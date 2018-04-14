@@ -1,6 +1,5 @@
 const User = require('../models').User;
 const random = require('randomstring');
-'use strict';
 const nodemailer = require('nodemailer');
 
 // create reusable transporter object using the default SMTP transport
@@ -27,22 +26,28 @@ module.exports = {
         from: '"Linkd" <Linkdteam1@gmail.com>', // sender address
         to: req.body.mail, // list of receivers
         subject: 'Verify Linkd Account', // Subject line
-        text: 'Please navigate to the following link in order to verify your Linkd account: \n'+req.body.mail, // plaintext body
-        html: '<b>Hello world</b>' // html body
+        html: '<b>Please navigate to the following link in order to verify your Linkd account:</b><br/><br/>' // html body
     };
+    var userId;
+    var salt = random.generate(10);
     return User
       .create({
         userEmail: req.body.mail,
         userPass: req.body.pass,
-        userSalt: random.generate(10),
+        userSalt: salt,
         userFirstName: req.body.firstName,
         userLastName: req.body.lastName,
       }) 
       .then(user => {
-        res.status(201).send(user)
-        console.log(user.id)
+        res.status(201).send(user);
+        res.params.send(user);
+        userId = user.id;
+        console.log((res.params.user.id).toString());
       })
       .catch(error => res.status(400).send(error))
+      .then(
+        mailOptions.html += 'localhost:8000/verify/'+userId+'/'+salt
+        )
       .then(transporter.sendMail(mailOptions, function(error, info){
         if(error){
             return console.log(error);
