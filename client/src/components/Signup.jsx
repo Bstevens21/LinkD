@@ -7,6 +7,8 @@ export default class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      firstName: '',
+      lastName: '',
       email: '',
       password: ''
     };
@@ -27,9 +29,9 @@ export default class Signup extends Component {
   }
 
   handleSubmit(event) {
+    console.log('Hello!');
     alert('hi' + this.state.email + this.state.password);
     event.preventDefault();
-    console.log('we made it');
     fetch('/api/createUser', {
       method: 'POST',
       headers: {
@@ -37,10 +39,12 @@ export default class Signup extends Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
         mail: this.state.email,
         pass: this.state.password,
       })
-  })
+    })
     // fetch('/api/createUser', {
     //   mehtod: 'POST'
     // })
@@ -58,17 +62,21 @@ export default class Signup extends Component {
      <h2>Sign up for Linkd!</h2>
       <form onSubmit={this.handleSubmit}>
        <label>
-            First Name:
-            <input
-                name="name"
-                type="name" />            
+          First Name:
+          <input
+            name="firstName"
+            type="text"
+            checked={this.state.firstName}
+            onChange={this.handleInputChange} />            
         </label>
         <br />
         <label>
-            Last Name:
-            <input
-                name="name"
-                type="name" />            
+          Last Name:
+          <input
+            name="lastName"
+            type="text"
+            checked={this.state.lastName}
+            onChange={this.handleInputChange} />            
         </label>
         <br />
         <label>
@@ -88,14 +96,7 @@ export default class Signup extends Component {
             value={this.state.password}
             onChange={this.handleInputChange} />
         </label>
-        <br />
-        <label>
-            Phone:
-            <input
-                name="phone"
-                type="number" />            
-        </label>
-        <Button bsStyle = "primary" className="submit"> Submit </Button>
+        <Button bsStyle = "primary" type="submit" className="submit"> Submit </Button>
          </form>
       </Jumbotron>
       </div>

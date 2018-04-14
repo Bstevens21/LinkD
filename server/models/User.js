@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     userEmail: {
       field: 'email',
       type: DataTypes.STRING,
-      // allowNull: false,
+      allowNull: false,
       unique: true,
       validate: {
         isEmail: true,
@@ -13,19 +13,29 @@ module.exports = (sequelize, DataTypes) => {
     userPass: {
       field: 'password',
       type: DataTypes.STRING,
-      // allowNull: false,
+      allowNull: false,
+    },
+    userFirstName: {
+      field: 'firstName',
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    userLastName: {
+      field: 'lastName',
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     userSalt: {
       field: 'salt',
       type: DataTypes.STRING,
-      // allowNull: false,
+      allowNull: false,
     },
     userRole: {
       field: 'role',
       type: DataTypes.ENUM,
       values: ['new','verified','inactive','deleted','admin'],
       defaultValue: 'new',
-      // allowNull: false,
+      allowNull: false,
     },
   });
   //get posts with user.getPosts()
