@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Jumbotron, Grid, Row, Col, Image, Button, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap'
 import './Signin.css';
-import { BrowserRouter as Router,  Route, Link} from 'react-router-dom'
+import { browserHistory, BrowserRouter as Router,  Route, Link} from 'react-router-dom'
+
 
 export default class Signin extends Component {
   constructor(props) {
@@ -15,7 +16,6 @@ export default class Signin extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
-
   handleInputChange(event) {
     const target = event.target;
     const value = target.value;
@@ -30,7 +30,7 @@ export default class Signin extends Component {
     alert('hi' + this.state.email + this.state.password);
     event.preventDefault();
     console.log('we made it');
-    fetch('/api/createUser', {
+    fetch('/api/signInUser', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -41,6 +41,10 @@ export default class Signin extends Component {
         pass: this.state.password,
       })
   })
+  .then(res => {
+    return res.json()
+  })
+  .then(res => this.props.history.push(res.redirectUrl));
     // fetch('/api/createUser', {
     //   mehtod: 'POST'
     // })
@@ -49,7 +53,6 @@ export default class Signin extends Component {
     // .catch(e => console.log('error', e));
   }
 
-  
   render() {
     return (
     <Grid>
@@ -70,11 +73,11 @@ export default class Signin extends Component {
           Password:
           <input
             name="password"
-            type="text"
+            type="password"
             value={this.state.password}
             onChange={this.handleInputChange} />
         </label>
-        <Button bsStyle = "primary" className="submit"> Submit </Button>
+        <Button bsStyle = "primary" type="submit" className="submit"> Submit </Button>
          </form>
       </Jumbotron>
       </div>
