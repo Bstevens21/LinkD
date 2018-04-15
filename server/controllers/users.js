@@ -20,6 +20,8 @@ var mailOptions = {
     html: '<b>Hello world</b>' // html body
 };
 
+global.userId = '';
+
 module.exports = {
   create(req, res) {
     var mailOptions = {
@@ -28,7 +30,7 @@ module.exports = {
         subject: 'Verify Linkd Account', // Subject line
         html: '<b>Please navigate to the following link in order to verify your Linkd account:</b><br/><br/>' // html body
     };
-    var userId;
+    
     var salt = random.generate(10);
     return User
       .create({
@@ -40,13 +42,10 @@ module.exports = {
       }) 
       .then(user => {
         res.status(201).send(user);
-        res.params.send(user);
-        userId = user.id;
-        console.log((res.params.user.id).toString());
       })
       .catch(error => res.status(400).send(error))
       .then(
-        mailOptions.html += 'localhost:8000/verify/'+userId+'/'+salt
+          mailOptions.html += '<a href="http://localhost:8000/api/verify/'+salt+'">Verify</a>'
         )
       .then(transporter.sendMail(mailOptions, function(error, info){
         if(error){
@@ -55,5 +54,21 @@ module.exports = {
         console.log('Message sent: ' + info.response);
     }));
   },
+
+  update(req, res) {
+    return User
+    const salt = req.params.salt;
+    console.log(salt);
+    User.find({
+      where: { userSalt: salt }
+    })
+      .then(user => {
+        return user.updateAttributes({userRole: 'verified'})
+      })
+      .then(updatedOwner => {
+        res.json(updatedOwner);
+      });
+  },
+  
 };
 
