@@ -10,13 +10,13 @@ module.exports = (app) => {
   app.post('/api/createUser', userController.create);
   app.get('/api/verify/:salt', function(req,res){
     const salt = req.params.salt;
-    console.log(salt);
     return User
     .find({
       where: { userSalt: salt }
     })
       .then(user => {
-        return user.updateAttributes({userRole: 'verified'})
+        user.updateAttributes({userRole: 'verified'});
+        return res.redirect('http://localhost:3000/signin');
       })
       .then(updatedOwner => {
         res.json(updatedOwner);
