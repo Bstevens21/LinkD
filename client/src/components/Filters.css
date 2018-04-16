@@ -1,0 +1,39 @@
+.filterwrap{
+    background-color:white;
+    width: 60%;
+    border-radius: 4px;
+    margin: 0 auto;
+    position: relative;
+    border: 2px solid;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.content{
+    margin: 0 auto;
+}
+
+.filterwrap ul{
+    display: block;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+
+.filterwrap li{
+    display: inline-block;
+    padding: 0 10px;
+    width: auto;
+    height: 30px;
+}
+
+.sortbutton{
+    margin-bottom: 0;
+    width: 100px;
+    height: 30px;
+    margin: 0;
+    background-color: #e3582a;
+    color: white;
+    border-radius: 20px;
+
+}

@@ -28,4 +28,8 @@
     float: right;
     border-radius:10px;
 }
-
+.welcome{
+    margin: 0 auto;
+    text-align: center;
+    margin: 10px;
+}
