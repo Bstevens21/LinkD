@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Jumbotron, Grid, Row, Col, Image, Button, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap'
-import './Signup.css';
 import { BrowserRouter as Router,  Route, Link} from 'react-router-dom'
+import './Signup.css';
 
 export default class Signup extends Component {
   constructor(props) {
@@ -45,12 +45,6 @@ export default class Signup extends Component {
         pass: this.state.password,
       })
     })
-    // fetch('/api/createUser', {
-    //   mehtod: 'POST'
-    // })
-    // .then(response => response.json())
-    // .then(data => this.setState({email: this.state.email, password: this.state.password}))
-    // .catch(e => console.log('error', e));
   }
 
   
@@ -60,43 +54,62 @@ export default class Signup extends Component {
      <div className = "container">
      <Jumbotron>
      <h2>Sign up for Linkd!</h2>
-      <form onSubmit={this.handleSubmit}>
-       <label>
+     <form onSubmit={this.handleSubmit}>
+        <fieldset className="form-group">
+          <label htmlFor="firstName" title="First Name:" />
           First Name:
-          <input
-            name="firstName"
+          <input            
+            id="firstName"
+            className="form-input"
+            name="firstname"
             type="text"
             checked={this.state.firstName}
-            onChange={this.handleInputChange} />            
-        </label>
-        <br />
-        <label>
+            onChange={this.handleInputChange}
+          />
+        </fieldset>
+        <fieldset className="form-group">
+          <label htmlFor="lastName" title="First Name:" />
           Last Name:
-          <input
-            name="lastName"
+          <input            
+            id="lastName"
+            className="form-input"
+            name="lastname"
             type="text"
             checked={this.state.lastName}
-            onChange={this.handleInputChange} />            
-        </label>
-        <br />
-        <label>
-          Email:
-          <input
-            name="email"
-            type="email"
-            checked={this.state.email}
-            onChange={this.handleInputChange} />
-        </label>
-        <br />
-        <label>
+            onChange={this.handleInputChange}
+          />
+        </fieldset>
+        <fieldset className="form-group">
+          <label htmlFor="formPassword" title="Password:" />
           Password:
           <input
+            id="formPassword"
+            ref="myInput"
+            className="form-input"
             name="password"
-            type="text"
+            type="password"
             value={this.state.password}
             onChange={this.handleInputChange} />
-        </label>
-        <Button bsStyle = "primary" type="submit" className="submit"> Submit </Button>
+        </fieldset>
+        <fieldset className="form-group">
+          <label htmlFor="formConfirmPassword" title="Confirm Password:" />
+          Confirm Password:
+          <input
+            id="formConfirmPassword"
+            ref="myInput"
+            className="form-input"
+            name="confirmpassword"
+            type="text"
+          />
+        </fieldset>
+        <fieldset>
+        <input
+          id="formButton"
+          className="btn btn-primary"
+          type="submit"
+          placeholder="Send message"
+        />
+        </fieldset>
          </form>
       </Jumbotron>
       </div>

@@ -1,13 +1,7 @@
-.container{
-    margin-bottom:40px;
-}
-.wrapper{
+.jumbotron{
     width: 60%;
     margin: 0 auto;
-}
-
-.jumbotron{
-    margin-top:20%;   
+    height: auto;
 }
 
 .btn-wrapper{
@@ -23,7 +17,9 @@
     border:none;
     border-radius:20px;
     background-color:#e3582a;
-    float:right;
+    align-items: right;
+    margin-top: 20px;
     margin-bottom:50px;
     
 }
+

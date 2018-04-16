@@ -1,21 +1,8 @@
-.container{
-    width:60%;
-}
-
-.container input{
+.container input {
     width: 100%;
     clear: both;
 }
 
-.btn-primary{
-    position:relative;
-    background-image:none;
-    margin-top: 20px;
-    width: 150px;
-    height: 30px;
-    border:none;
-    border-radius:20px;
-    background-color:#e3582a;
-    float:left;
-    margin-bottom:100px;
+#formButton{
+    margin-top:20px;
 }
