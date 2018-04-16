@@ -1,22 +1,9 @@
-.container{
-    margin-bottom:40px;
-}
-.wrapper{
-    width: 60%;
-    margin: 0 auto;
-}
-
 .jumbotron{
     border: 2px solid #685c46;
-    background-color:white;
+    background-color: white;
     border-radius:0;
     margin-bottom: 4em;
     color: #73bbad;
-}
-
-
-.post{
-    width:50%;
 }
 
 .btn-primary{
@@ -28,7 +15,7 @@
     border:none;
     border-radius:20px;
     background-color:#e3582a;
-    float:right;
+    float:left;
     margin-bottom:50px;
 }
 
@@ -41,21 +28,4 @@
     float: right;
     border-radius:10px;
 }
-.post-wrapper{
-    margin-top: 2em;
-    margin: 0 auto;
-    padding: 15px 15px;
-    margin-bottom: 2em;
-}
 
-.post{
-    width: 100%;
-    border: 2px solid #685c46;
-    border-radius:2;
-    padding: 15px 15px;
-    background-color:white;
-    color: #73bbad;
-}
-.post p{
-    font-size:12px;
-}

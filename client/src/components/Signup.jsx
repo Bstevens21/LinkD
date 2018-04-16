@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Jumbotron, Grid, Row, Col, Image, Button, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap'
-import './Signup.css';
 import { BrowserRouter as Router,  Route, Link} from 'react-router-dom'
+import './Signup.css';
 
 export default class Signup extends Component {
   constructor(props) {
@@ -56,46 +56,57 @@ export default class Signup extends Component {
      <div className = "container">
      <Jumbotron>
      <h2>Sign up for Linkd!</h2>
-      <form onSubmit={this.handleSubmit}>
-       <label>
-            First Name:
-            <input
-                name="name"
-                type="name" />            
-        </label>
-        <br />
-        <label>
-            Last Name:
-            <input
-                name="name"
-                type="name" />            
-        </label>
-        <br />
-        <label>
-          Email:
-          <input
-            name="email"
-            type="email"
-            checked={this.state.email}
-            onChange={this.handleInputChange} />
-        </label>
-        <br />
-        <label>
+     <form onSubmit={this.handleSubmit}>
+        <fieldset className="form-group">
+          <label htmlFor="firstName" title="First Name:" />
+          First Name:
+          <input            
+            id="firstName"
+            className="form-input"
+            name="firstname"
+            type="text"
+          />
+        </fieldset>
+        <fieldset className="form-group">
+          <label htmlFor="lastName" title="First Name:" />
+          Last Name:
+          <input            
+            id="lastName"
+            className="form-input"
+            name="lastname"
+            type="text"
+          />
+        </fieldset>
+        <fieldset className="form-group">
+          <label htmlFor="formPassword" title="Password:" />
           Password:
           <input
+            id="formPassword"
+            ref="myInput"
+            className="form-input"
             name="password"
             type="text"
-            value={this.state.password}
-            onChange={this.handleInputChange} />
-        </label>
-        <br />
-        <label>
-            Phone:
-            <input
-                name="phone"
-                type="number" />            
-        </label>
-        <Button bsStyle = "primary" className="submit"> Submit </Button>
+          />
+        </fieldset>
+        <fieldset className="form-group">
+          <label htmlFor="formConfirmPassword" title="Confirm Password:" />
+          Confirm Password:
+          <input
+            id="formConfirmPassword"
+            ref="myInput"
+            className="form-input"
+            name="confirmpassword"
+            type="text"
+          />
+        </fieldset>
+        <fieldset>
+        <input
+          id="formButton"
+          className="btn btn-primary"
+          type="submit"
+          placeholder="Send message"
+        />
+        </fieldset>
          </form>
       </Jumbotron>
       </div>

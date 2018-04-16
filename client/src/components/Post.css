@@ -4,7 +4,6 @@
     margin-bottom:10px;
     color: white;
 }
-
 .post-wrapper{
     margin-top: 2em;
     margin: 0 auto;
@@ -13,14 +12,16 @@
 }
 
 .post{
-    width: 100%;
+    width: 60%;
     border: 2px solid #685c46;
     border-radius:2;
-    padding: 20px 35px;
+    padding: 15px 15px;
     background-color:white;
     color: #73bbad;
+    margin: 0 auto;
+    margin-top: 40px;
 }
+
 .post p{
     font-size:12px;
-    margin:20px, 20px;
 }

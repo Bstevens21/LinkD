@@ -57,24 +57,35 @@ export default class Signin extends Component {
      <Jumbotron>
      <h1>Sign In</h1>
       <form onSubmit={this.handleSubmit}>
-        <label>
-          Email:
-          <input
-            name="email"
-            type="email"
-            checked={this.state.email}
-            onChange={this.handleInputChange} />
-        </label>
-        <br />
-        <label>
+        <fieldset className="form-group">
+          <label htmlFor="formName" title="Username:" />
+          Username:
+          <input            
+            id="formName"
+            className="form-input"
+            name="username"
+            type="text"
+          />
+        </fieldset>
+        <fieldset className="form-group">
+          <label htmlFor="formPassword" title="Password:" />
           Password:
           <input
+            id="formPassword"
+            ref="myInput"
+            className="form-input"
             name="password"
             type="text"
-            value={this.state.password}
-            onChange={this.handleInputChange} />
-        </label>
-        <Button bsStyle = "primary" className="submit"> Submit </Button>
+          />
+        </fieldset>
+        <fieldset>
+        <input
+          id="formButton"
+          className="btn btn-primary"
+          type="submit"
+          placeholder="Send message"
+        />
+        </fieldset>
          </form>
       </Jumbotron>
       </div>
@@ -82,4 +93,3 @@ export default class Signin extends Component {
     );
   }
 }
-
