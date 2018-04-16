@@ -20,8 +20,6 @@ var mailOptions = {
     html: '<b>Hello world</b>' // html body
 };
 
-global.userId = '';
-
 module.exports = {
   create(req, res) {
     var mailOptions = {
@@ -55,20 +53,38 @@ module.exports = {
     }));
   },
 
-  update(req, res) {
-    return User
-    const salt = req.params.salt;
-    console.log(salt);
-    User.find({
-      where: { userSalt: salt }
+  signIn(req, res){
+    const email = req.body.mail;
+    console.log(email);
+     User
+    .find({
+      where: { userEmail: email }
     })
       .then(user => {
-        return user.updateAttributes({userRole: 'verified'})
+        console.log(user.userRole);
+        if(user.userRole == 'verified'){
+          return res.status(200).json({redirectUrl:'/home'});
+        }else{
+          return res.status(200).json({redirectUrl:'/signin'});
+        }
       })
-      .then(updatedOwner => {
-        res.json(updatedOwner);
-      });
-  },
+  }
+
+
+  // update(req, res) {
+  //   return User
+  //   const salt = req.params.salt;
+  //   console.log(salt);
+  //   User.find({
+  //     where: { userSalt: salt }
+  //   })
+  //     .then(user => {
+  //       return user.updateAttributes({userRole: 'verified'})
+  //     })
+  //     .then(updatedOwner => {
+  //       res.json(updatedOwner);
+  //     });
+  // },
   
 };
 

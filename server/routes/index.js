@@ -8,6 +8,7 @@ module.exports = (app) => {
   }));
 
   app.post('/api/createUser', userController.create);
+  app.post('/api/signInUser', userController.signIn);
   app.get('/api/verify/:salt', function(req,res){
     const salt = req.params.salt;
     return User
