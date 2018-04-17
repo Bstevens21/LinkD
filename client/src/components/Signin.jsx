@@ -55,13 +55,15 @@ export default class Signin extends Component {
      <h1>Sign In</h1>
       <form onSubmit={this.handleSubmit}>
         <fieldset className="form-group">
-          <label htmlFor="formName" title="Username:" />
-          Username:
+          <label htmlFor="formName" title="Email:" />
+          Email:
           <input            
             id="formName"
             className="form-input"
-            name="username"
-            type="text"
+            name="email"
+            type="email"
+            value={this.state.email}
+            onChange={this.handleInputChange}
           />
         </fieldset>
         <fieldset className="form-group">

@@ -16,4 +16,28 @@ module.exports = {
         console.log('Here: '+req.body.title)
       });
   },
+
+  getPost(req, res) {
+    Post
+    .findAll({
+      order: [
+        ['createdAt', 'DESC']
+      ]
+    }).then(post => res.status(200).json({"post": post}))
+    .catch(error => {
+      res.status(400).send(error)
+      console.log(error)
+    });
+  },
+
+  filterCat(req, res){
+    const category = req.params.category;
+    Post.findAll({
+      where: { postCategory : category }
+    }).then(post => res.status(200).json({"post": post}))
+    .catch(error => {
+      res.status(400).send(error)
+      console.log(error)
+    });
+  }
 };

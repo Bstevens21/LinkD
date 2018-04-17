@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     postStartTime: {
       field: 'startTime',
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     postDuration: {

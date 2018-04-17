@@ -59,8 +59,7 @@ module.exports = {
      User
     .find({
       where: { userEmail: email }
-    })
-      .then(user => {
+    }).then(user => {
         console.log(user.userRole);
         if(user.userRole == 'verified'){
           return res.status(200).json({redirectUrl:'/home'});

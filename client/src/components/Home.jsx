@@ -10,7 +10,7 @@ export default class Home extends Component{
         return(
             <Grid>
                <div className="wrapper">
-               <h1 className="welcome">Welcome, Name!</h1>
+               <h1 className="welcome">Welcome to Linkd!</h1>
                <PostComposer />
                <Filters />
                <Post />

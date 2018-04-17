@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false,
       },
       startTime: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       duration: {

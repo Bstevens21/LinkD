@@ -15,12 +15,19 @@ export default class PostComposer extends React.Component {
       title: '',
       description: '',
       category: '',
-      when: '',
-      location: '',
+      when: moment(),
+      location: ''
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleTimeChange = this.handleTimeChange.bind(this);
+  }
+
+  handleTimeChange(date, formatted) {
+    this.setState({
+      when: formatted
+    });
   }
 
   handleInputChange(event) {
@@ -34,6 +41,7 @@ export default class PostComposer extends React.Component {
   }
 
   handleSubmit(event) {
+    //alert('Hello, ' + this.state.title + this.state.location + this.state.description + this.state.category + ' ' + this.state.when);
     event.preventDefault();
     fetch('/api/createPost', {
       method: 'POST',
@@ -48,7 +56,7 @@ export default class PostComposer extends React.Component {
         category: this.state.category,
         location: this.state.location
       })
-    })
+    }).then(window.location.reload());
     // .then(res => {
     //   return res.json()
     // })
@@ -68,7 +76,6 @@ export default class PostComposer extends React.Component {
                    Title:
                     <input
                      id='title'
-                      htmlFor='textInput'
                       className='title'
                       name='title'
                       required='true'
@@ -77,62 +84,67 @@ export default class PostComposer extends React.Component {
                       onChange={this.handleInputChange}
                     />
                 </fieldset>
-                Description:
                 <fieldset className="form-group">
-                   <label htmlFor="body" title="Description:" />
+                   <label htmlFor="description" title="Description:" />
+                   Description:
                     <textarea
-                    id='description'
-                    label='Description'
-                    type='textarea'
-                    required='true'
+                     id='description'
+                      className='description'
+                      name='description'
+                      required='true'
+                      type='text'
+                      checked={this.state.description}
+                      onChange={this.handleInputChange}
                     />
                 </fieldset>
                 <fieldset className="form-group">
-                  Category:
+                   <label htmlFor="location" title="Location:" />
+                   Location:
+                    <textarea
+                     id='location'
+                      className='location'
+                      name='location'
+                      required='true'
+                      type='text'
+                      checked={this.state.location}
+                      onChange={this.handleInputChange}
+                    />
+                </fieldset>
+                <fieldset className="form-group">
                    <label htmlFor="catlist" title="Category:" />
+                   Category:
                     <select
                       id='category'
-                      label='Category'
-                      type='text'
-                      options='sports, food, games, event, club, other'
+                      className='category'
+                      name='category'
                       required='true'
+                      type='text'
+                      checked={this.state.category}
+                      onChange={this.handleInputChange}
                     >
-                    <option value = "sports">Sports</option>
+                    <option value = "default">Select Type</option>
+                    <option value = "sport">Sports</option>
                     <option value = "food">Food</option>
-                    <option value = "games">Games</option>
+                    <option value = "game">Games</option>
                     <option value = "event">Event</option>
                     <option value = "club">Club</option>
                     <option value = "other">Other</option>
                     </select>
                 
                 </fieldset>
-                <fieldset>
-                  Date:
-                   <label htmlFor="date" title="Date:" />
-                    <input
-                    id='date'
-                    htmlFor="calendar"
-                    label="date"
-                    required='true'
-                    type="date"
-                    />
-                </fieldset>
-                <fieldset>
-                  Time:
-                   <label htmlFor="date" title="Time:" />
-                    <input
-                    id='time'
-                    className="time"
-                    htmlFor="time"
-                    label="time"
-                    required='true'
-                    type="time"
-                    />
+                <fieldset className="form-group">
+                  <label htmlFor="date" title="Date:" />
+                  Date and time of activity:
+                    <DatePicker
+                      selected={this.state.when}
+                      onChange={this.handleTimeChange}
+                      showTimeSelect
+                      dateFormat="LLL" />
                 </fieldset>
                 <fieldset>
                 <input
                   type='submit'
-                  value='submit'
+                  value='Submit'
                   text='Post'
                   className="btn btn-primary"
                 />
