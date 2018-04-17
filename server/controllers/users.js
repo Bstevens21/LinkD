@@ -39,7 +39,7 @@ module.exports = {
         userLastName: req.body.lastName,
       }) 
       .then(user => {
-        res.status(201).send(user);
+        res.status(201).json({redirectUrl:'/signin'});
       })
       .catch(error => res.status(400).send(error))
       .then(

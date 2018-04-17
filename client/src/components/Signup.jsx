@@ -29,8 +29,8 @@ export default class Signup extends Component {
   }
 
   handleSubmit(event) {
-    console.log('Hello!');
-    alert('hi' + this.state.email + this.state.password);
+
+    alert('Hello, ' + this.state.firstName + '! Please check your email for a verification link.');
     event.preventDefault();
     fetch('/api/createUser', {
       method: 'POST',
@@ -45,6 +45,10 @@ export default class Signup extends Component {
         pass: this.state.password,
       })
     })
+    .then(res => {
+      return res.json()
+    })
+    .then(res => this.props.history.push(res.redirectUrl));
   }
 
   
@@ -61,7 +65,7 @@ export default class Signup extends Component {
           <input            
             id="firstName"
             className="form-input"
-            name="firstname"
+            name="firstName"
             type="text"
             checked={this.state.firstName}
             onChange={this.handleInputChange}
@@ -73,11 +77,23 @@ export default class Signup extends Component {
           <input            
             id="lastName"
             className="form-input"
-            name="lastname"
+            name="lastName"
             type="text"
             checked={this.state.lastName}
             onChange={this.handleInputChange}
           />
+        </fieldset>
+        <fieldset className="form-group">
+          <label htmlFor="formEmail" title="School Email:" />
+          School Email:
+          <input
+            id="formEmail"
+            ref="myInput"
+            className="form-input"
+            name="email"
+            type="email"
+            value={this.state.email}
+            onChange={this.handleInputChange} />
         </fieldset>
         <fieldset className="form-group">
           <label htmlFor="formPassword" title="Password:" />
@@ -99,7 +115,7 @@ export default class Signup extends Component {
             ref="myInput"
             className="form-input"
             name="confirmpassword"
-            type="text"
+            type="password"
           />
         </fieldset>
         <fieldset>

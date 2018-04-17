@@ -45,12 +45,6 @@ export default class Signin extends Component {
     return res.json()
   })
   .then(res => this.props.history.push(res.redirectUrl));
-    // fetch('/api/createUser', {
-    //   mehtod: 'POST'
-    // })
-    // .then(response => response.json())
-    // .then(data => this.setState({email: this.state.email, password: this.state.password}))
-    // .catch(e => console.log('error', e));
   }
 
   render() {
