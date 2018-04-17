@@ -1,5 +1,6 @@
 .nav.navbar, .navbar-default {
     background-color: #73bbad;
+    color:white;
 }
 
 .navbar-default{
@@ -67,4 +68,7 @@ svg{
     color: white;
     fill: white;
     background-color:white;
+}
+a{
+    color:white;
 }

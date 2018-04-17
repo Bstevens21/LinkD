@@ -16,11 +16,8 @@ export default class CustomNav extends Component{
                     </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav pullRight>
-                        <NavItem eventKey={1} componentClass={Link} to= "/home">
-                        Home
-                        </NavItem>
-                        <NavItem eventKey={4} componentClass={Link} to= "/settings">
-                        More
+                        <NavItem className="logout">
+                          <Link to="/landing">Logout</Link>
                         </NavItem>
                     </Nav>
                 </Navbar.Collapse>

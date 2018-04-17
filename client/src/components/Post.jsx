@@ -33,20 +33,18 @@ export default class Post extends Component{
             this.state.posts.map((anObjectMapped, index) => {
                 return (
                         <Grid>
-                            <Row className="show-grid text-left">
-                                <Col md={12} sm={6} className="post-wrapper">
+                            <div className="post-wrapper">
                                     <div className="post">
                                        <Link to="/">
                                             <Button bsStyle="secondary" className="interested"> I'm interested</Button>
                                         </Link>
                                         <h1>{anObjectMapped.postTitle}</h1>
                                         <p>{anObjectMapped.postBody}</p>
-                                        <p>{anObjectMapped.postCategory}</p>
-                                        <p>{anObjectMapped.postLocation}</p>
-                                        <p>{this.formatDate(anObjectMapped.postStartTime)}</p>
+                                        <h6>{anObjectMapped.postCategory.charAt(0).toUpperCase()+anObjectMapped.postCategory.slice(1)}</h6>
+                                        <h6>{anObjectMapped.postLocation}</h6>
+                                        <h6>{this.formatDate(anObjectMapped.postStartTime)}</h6>
                                     </div>
-                                </Col>
-                            </Row>
+                                </div>
                         </Grid>
                 );
             })

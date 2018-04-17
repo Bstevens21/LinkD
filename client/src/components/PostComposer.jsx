@@ -24,9 +24,9 @@ export default class PostComposer extends React.Component {
     this.handleTimeChange = this.handleTimeChange.bind(this);
   }
 
-  handleTimeChange(date, formatted) {
+  handleTimeChange(date) {
     this.setState({
-      when: formatted
+      when: date
     });
   }
 
@@ -136,6 +136,7 @@ export default class PostComposer extends React.Component {
                   <label htmlFor="date" title="Date:" />
                   Date and time of activity:
                     <DatePicker
+                      className="Datepicker"
                       selected={this.state.when}
                       onChange={this.handleTimeChange}
                       showTimeSelect

@@ -23,5 +23,12 @@
 }
 
 .post p{
-    font-size:12px;
+    font-size:15px;
+}
+
+h6{
+    font-size:15px;
+    color: #685c46;
+    display:inline-block;
+    margin-right:10px;
 }

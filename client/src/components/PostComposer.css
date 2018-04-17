@@ -5,10 +5,14 @@ textarea{
 select{
     width: 100%;
 }
-.time{
-    margin-bottom: 30px;
+.Datepicker{
+    width:100%;
 }
 input{
     padding: 5px;
     margin-top: 10px;
+}
+
+fieldset{
+	width:100%;
 }
