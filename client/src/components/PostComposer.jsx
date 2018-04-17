@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
-import { Link } from 'react-router-dom'
 import { FormGroup, FormControl, ControlLabel, HelpBlock, Jumbotron, Grid } from 'react-bootstrap'
 import DatePicker from 'react-datepicker'
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import "./PostComposer.css"
+import { browserHistory, BrowserRouter as Router,  Route, Link} from 'react-router-dom'
 
 
 class Button extends React.Component {
@@ -120,10 +120,11 @@ class Calendar extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
  
-  handleChange(date) {
+  handleChange(date) {  
     this.setState({
       startDate: date
     });
+    alert('Hello, ' + this.state.date + '! Please check your email for a verification link.');
   }
  
   render() {
@@ -149,13 +150,60 @@ class Calendar extends React.Component {
 }
 
 export default class PostComposer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: '',
+      description: '',
+      category: '',
+      when: '',
+      location: '',
+    };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    fetch('/api/createPost', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title: this.state.title,
+        start: this.state.when,
+        body: this.state.description,
+        category: this.state.category,
+        location: this.state.location
+      })
+    })
+    // .then(res => {
+    //   return res.json()
+    // })
+    // .then(res => this.props.history.push(res.redirectUrl));
+  }
+
+
   render() {
     return (
     <Grid>
     <div className="composercontainer">
        <Jumbotron>
         <h2>Create Post!</h2>
-            <form method='' action=''>
+            <form onSubmit={this.handleSubmit}>
                 <fieldset className="form-group">
                     <Input
                       hasLabel='true'
@@ -163,14 +211,30 @@ export default class PostComposer extends React.Component {
                       label='Title'
                       required='true'
                       type='text'
+                      checked={this.state.title}
+                      onChange={this.handleInputChange}
                     />
                 </fieldset>
                 <fieldset className="form-group">
                     <Textarea
-                    hasLabel='true'
-                    htmlFor='textarea'
-                    label='Description'
-                    required='true'
+                      hasLabel='true'
+                      htmlFor='textarea'
+                      label='Description'
+                      required='true'
+                      type='text'
+                      checked={this.state.description}
+                      onChange={this.handleInputChange}
+                    />
+                </fieldset>
+                <fieldset className="form-group">
+                    <Textarea
+                      hasLabel='true'
+                      htmlFor='textarea'
+                      label='Location'
+                      type='text'
+                      required='true'
+                      checked={this.state.location}
+                      onChange={this.handleInputChange}
                     />
                 </fieldset>
                 <fieldset className="form-group">
@@ -178,16 +242,22 @@ export default class PostComposer extends React.Component {
                       hasLabel='true'
                       htmlFor='catlist'
                       label='Category'
-                      options='Sports, Food, Games, Hangout, Event, Club, Other'
+                      type='text'
+                      options='sports, food, games, event, club, other'
                       required='true'
+                      checked={this.state.category}
+                      onChange={this.handleInputChange}
                     />
                 </fieldset>
                 <fieldset>
                     <Calendar
-                    hasLabel='true'
-                    htmlFor="calendar"
-                    label="When"
-                    required='true'
+                      hasLabel='true'
+                      htmlFor="calendar"
+                      label="When"
+                      type='date'
+                      required='true'
+                      // checked={this.state.when}
+                      // onChange={this.handleInputChange}
                     />
                 </fieldset>
                 <Button

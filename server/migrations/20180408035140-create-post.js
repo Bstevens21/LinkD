@@ -18,7 +18,6 @@ module.exports = {
       },
       duration: {
         type: Sequelize.TIME,
-        allowNull: false,
       },
       location: {
         type: Sequelize.STRING,

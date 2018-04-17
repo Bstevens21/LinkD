@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     postDuration: {
       field: 'duration',
       type: DataTypes.TIME,
-      allowNull: false,
     },
     postLocation: {
       field: 'location',
@@ -48,7 +47,6 @@ module.exports = (sequelize, DataTypes) => {
       field: 'category',
       type: DataTypes.ENUM,
       values: ['sport','event','game','food','outdoor','club', 'other'],
-      defaultValue: 'game',
       allowNull: false,
     },
   });
