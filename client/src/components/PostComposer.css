@@ -5,7 +5,10 @@ textarea{
 select{
     width: 100%;
 }
-
-Calendar{
-    width: 100%;
+.time{
+    margin-bottom: 30px;
+}
+input{
+    padding: 5px;
+    margin-top: 10px;
 }

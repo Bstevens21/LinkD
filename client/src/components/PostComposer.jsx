@@ -7,147 +7,6 @@ import "./PostComposer.css"
 import { browserHistory, BrowserRouter as Router,  Route, Link} from 'react-router-dom'
 
 
-class Button extends React.Component {
-  render() {
-    return (
-      <fieldset>
-        <button
-         className="btn btn-primary"
-          type={this.props.type || 'button'}
-          value={this.props.value || null}
-        >
-          {this.props.text}
-        </button>
-      </fieldset>
-    );
-  }
-};
-
-class Label extends React.Component {
-  render() {
-    if (this.props.hasLabel === 'true') {
-      return <label htmlFor={this.props.htmlFor}>{this.props.label}</label>
-    }
-  }
-}
-
-class Input extends React.Component {
-  render() {
-    return (
-      <fieldset>
-        <Label
-          hasLabel={this.props.hasLabel}
-          htmlFor={this.props.htmlFor}
-          label={this.props.label}
-        />
-
-        <input
-          id={this.props.htmlFor}
-          max={this.props.max || null}
-          min={this.props.min || null}
-          name={this.props.name || null}
-          placeholder={this.props.placeholder || null}
-          required={this.props.required || null}
-          step={this.props.step || null}
-          type={this.props.type || 'text'}
-        />
-      </fieldset>
-    );
-  }
-}
-
-class Select extends React.Component {
-  render() {
-    // Get all options from option prop
-    const selectOptions = this.props.options.split(', ');
-
-    // Generate list of options
-    const selectOptionsList = selectOptions.map((selectOption, index) => {
-      return <option key={index} value={index}>{selectOption}</option>
-    });
-
-    return (
-      <fieldset>
-        <Label
-          hasLabel={this.props.hasLabel}
-          htmlFor={this.props.htmlFor}
-          label={this.props.label}
-        />
-        
-        <select
-          defaultValue=''
-          id={this.props.htmlFor}
-          name={this.props.name || null}
-          required={this.props.required || null}
-        >
-          <option value='' disabled>Select one option</option>
-
-          {selectOptionsList}
-        </select>
-      </fieldset>
-    );
-  }
-};
-
-class Textarea extends React.Component {
-  render() {
-    return (
-      <fieldset>
-        <Label
-          hasLabel={this.props.hasLabel}
-          htmlFor={this.props.htmlFor}
-          label={this.props.label}
-        />
-        <textarea
-          cols={this.props.cols || null}
-          id={this.props.htmlFor}
-          name={this.props.name || null}
-          required={this.props.required || null}
-          rows={this.props.rows || null}
-        >
-        </textarea>
-      </fieldset>
-    );
-  }
-};
-
-class Calendar extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      startDate: moment()
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
- 
-  handleChange(date) {  
-    this.setState({
-      startDate: date
-    });
-    alert('Hello, ' + this.state.date + '! Please check your email for a verification link.');
-  }
- 
-  render() {
-    return (
-        <fieldset>
-        <Label
-          hasLabel={this.props.hasLabel}
-          htmlFor={this.props.htmlFor}
-          label={this.props.label}
-        />
-        <DatePicker
-            selected={this.state.startDate}
-            onChange={this.handleChange}
-            showTimeSelect
-            timeFormat="HH:mm"
-            timeIntervals={15}
-            dateFormat="LLL"
-            timeCaption="time"
-        />
-        </fieldset>
-        );
-  }
-}
 
 export default class PostComposer extends React.Component {
   constructor(props) {
@@ -205,66 +64,79 @@ export default class PostComposer extends React.Component {
         <h2>Create Post!</h2>
             <form onSubmit={this.handleSubmit}>
                 <fieldset className="form-group">
-                    <Input
-                      hasLabel='true'
+                   <label htmlFor="title" title="Title:" />
+                   Title:
+                    <input
+                     id='title'
                       htmlFor='textInput'
-                      label='Title'
+                      className='title'
+                      name='title'
                       required='true'
                       type='text'
                       checked={this.state.title}
                       onChange={this.handleInputChange}
                     />
                 </fieldset>
+                Description:
                 <fieldset className="form-group">
-                    <Textarea
-                      hasLabel='true'
-                      htmlFor='textarea'
-                      label='Description'
-                      required='true'
-                      type='text'
-                      checked={this.state.description}
-                      onChange={this.handleInputChange}
+                   <label htmlFor="body" title="Description:" />
+                    <textarea
+                    id='description'
+                    label='Description'
+                    type='textarea'
+                    required='true'
                     />
                 </fieldset>
                 <fieldset className="form-group">
-                    <Textarea
-                      hasLabel='true'
-                      htmlFor='textarea'
-                      label='Location'
-                      type='text'
-                      required='true'
-                      checked={this.state.location}
-                      onChange={this.handleInputChange}
-                    />
-                </fieldset>
-                <fieldset className="form-group">
-                    <Select
-                      hasLabel='true'
-                      htmlFor='catlist'
+                  Category:
+                   <label htmlFor="catlist" title="Category:" />
+                    <select
+                      id='category'
                       label='Category'
                       type='text'
                       options='sports, food, games, event, club, other'
                       required='true'
-                      checked={this.state.category}
-                      onChange={this.handleInputChange}
+                    >
+                    <option value = "sports">Sports</option>
+                    <option value = "food">Food</option>
+                    <option value = "games">Games</option>
+                    <option value = "event">Event</option>
+                    <option value = "club">Club</option>
+                    <option value = "other">Other</option>
+                    </select>
+                
+                </fieldset>
+                <fieldset>
+                  Date:
+                   <label htmlFor="date" title="Date:" />
+                    <input
+                    id='date'
+                    htmlFor="calendar"
+                    label="date"
+                    required='true'
+                    type="date"
                     />
                 </fieldset>
                 <fieldset>
-                    <Calendar
-                      hasLabel='true'
-                      htmlFor="calendar"
-                      label="When"
-                      type='date'
-                      required='true'
-                      // checked={this.state.when}
-                      // onChange={this.handleInputChange}
+                  Time:
+                   <label htmlFor="date" title="Time:" />
+                    <input
+                    id='time'
+                    className="time"
+                    htmlFor="time"
+                    label="time"
+                    required='true'
+                    type="time"
                     />
                 </fieldset>
-                <Button
+                <fieldset>
+                <input
                   type='submit'
                   value='submit'
                   text='Post'
+                  className="btn btn-primary"
                 />
+                </fieldset>
           </form>
         </Jumbotron>
         </div>
