@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
     postCategory: {
       field: 'category',
       type: DataTypes.ENUM,
-      values: ['sport','event','game','food','outdoor','club'],
+      values: ['sport','event','game','food','outdoor','club', 'other'],
       defaultValue: 'game',
       allowNull: false,
     },
