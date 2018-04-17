@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Jumbotron, Grid, Row, Col, Image, Button, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap'
+import { Alert, Jumbotron, Grid, Row, Col, Image, Button, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap'
 import './Signin.css';
 import { BrowserRouter as Router,  Route, Link} from 'react-router-dom'
 
@@ -9,7 +9,8 @@ export default class Signin extends Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      msg: null
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -27,7 +28,7 @@ export default class Signin extends Component {
   }
 
   handleSubmit(event) {
-    alert('hi' + this.state.email + this.state.password);
+    alert('hi' + this.state.msg);
     event.preventDefault();
     console.log('we made it');
     fetch('/api/signInUser', {
@@ -44,7 +45,11 @@ export default class Signin extends Component {
   .then(res => {
     return res.json()
   })
-  .then(res => this.props.history.push(res.redirectUrl));
+  .then(res => {
+    this.props.history.push(res.redirectUrl)
+    this.setState({ msg: res.msg })
+    console.log(res.msg)
+  });
   }
 
   render() {
@@ -87,6 +92,7 @@ export default class Signin extends Component {
         />
         </fieldset>
       </form>
+      <Alert>{this.state.msg}</Alert>
       </Jumbotron>
       </div>
      </Grid>

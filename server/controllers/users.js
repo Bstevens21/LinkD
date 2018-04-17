@@ -64,7 +64,10 @@ module.exports = {
         if(user.userRole == 'verified'){
           return res.status(200).json({redirectUrl:'/home'});
         }else{
-          return res.status(200).json({redirectUrl:'/signin'});
+          return res.status(200).json({
+            //redirectUrl:'/signin',
+            msg: 'You haven\'t verified your email yet!!'
+          });
         }
       })
   }
