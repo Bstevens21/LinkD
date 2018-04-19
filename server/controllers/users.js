@@ -22,6 +22,12 @@ var mailOptions = {
 
 module.exports = {
   create(req, res) {
+    const emailToCheck = req.body.email;
+    if(emailToCheck.includes('mavs.coloradomesa.edu') != true){
+      return res.status(200).json({
+        msg: 'You need to use a Colorado Mesa Email!'
+      });
+    }
     var mailOptions = {
         from: '"Linkd" <Linkdteam1@gmail.com>', // sender address
         to: req.body.mail, // list of receivers
