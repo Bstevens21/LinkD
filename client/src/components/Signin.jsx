@@ -28,7 +28,7 @@ export default class Signin extends Component {
   }
 
   handleSubmit(event) {
-    //alert('hi' + this.state.msg);
+    //Malert('hi' + this.state.msg);
     event.preventDefault();
     console.log('we made it');
     fetch('/api/signInUser', {
