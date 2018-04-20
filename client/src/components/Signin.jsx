@@ -10,7 +10,8 @@ export default class Signin extends Component {
     this.state = {
       email: '',
       password: '',
-      msg: null
+      msg: null,
+      alertStatus: null
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -46,9 +47,11 @@ export default class Signin extends Component {
     return res.json()
   })
   .then(res => {
-    this.props.history.push(res.redirectUrl)
-    this.setState({ msg: res.msg })
-    console.log(res.msg)
+    if (res.msg){
+      console.log('Msg: '+res.msg)
+      this.setState({ msg: res.msg })
+      this.setState({ alertStatus: res.alertStatus })
+    }else {this.props.history.push(res.redirectUrl)}
   });
   }
 
@@ -92,7 +95,7 @@ export default class Signin extends Component {
         />
         </fieldset>
       </form>
-      <Alert>{this.state.msg}</Alert>
+      <Alert bsStyle={this.state.alertStatus}>{this.state.msg}</Alert>
       </Jumbotron>
       </div>
      </Grid>

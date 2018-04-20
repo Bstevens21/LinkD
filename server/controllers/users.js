@@ -22,10 +22,11 @@ var mailOptions = {
 
 module.exports = {
   create(req, res) {
-    const emailToCheck = req.body.email;
+    const emailToCheck = req.body.mail;
     if(emailToCheck.includes('mavs.coloradomesa.edu') != true){
       return res.status(200).json({
-        msg: 'You need to use a Colorado Mesa Email!'
+        msg: 'You need to use a Colorado Mesa Email!',
+        alertStatus: 'danger'
       });
     }
     var mailOptions = {
@@ -72,7 +73,8 @@ module.exports = {
         }else{
           return res.status(200).json({
             //redirectUrl:'/signin',
-            msg: 'You haven\'t verified your email yet!!'
+            msg: 'You haven\'t verified your email yet!!',
+            alertStatus: 'danger'
           });
         }
       })

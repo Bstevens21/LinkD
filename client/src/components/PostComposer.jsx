@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { FormGroup, FormControl, ControlLabel, HelpBlock, Jumbotron, Grid } from 'react-bootstrap'
+import { Form, FormGroup, FormControl, ControlLabel, HelpBlock, Jumbotron, Grid } from 'react-bootstrap'
 import DatePicker from 'react-datepicker'
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -16,12 +16,14 @@ export default class PostComposer extends React.Component {
       description: '',
       category: '',
       when: moment(),
-      location: ''
+      location: '',
+      showHidePostComposer: false
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTimeChange = this.handleTimeChange.bind(this);
+    this.showHide = this.showHide.bind(this);
   }
 
   handleTimeChange(date) {
@@ -38,6 +40,14 @@ export default class PostComposer extends React.Component {
     this.setState({
       [name]: value
     });
+  }
+
+  showHide(event) {
+    event.preventDefault();
+    this.setState({
+      showHidePostComposer: !this.state.showHidePostComposer
+    })
+    console.log('hello'+this.state.showHidePostComposer)
   }
 
   handleSubmit(event) {
@@ -69,8 +79,8 @@ export default class PostComposer extends React.Component {
     <Grid>
     <div className="composercontainer">
        <Jumbotron>
-        <h2>Create Post!</h2>
-            <form onSubmit={this.handleSubmit}>
+        <h2>Create a Post!</h2>
+            <form style={{display: this.state.showHidePostComposer ? 'block' : 'none' }} onSubmit={this.handleSubmit}>
                 <fieldset className="form-group">
                    <label htmlFor="title" title="Title:" />
                    Title:
@@ -151,6 +161,14 @@ export default class PostComposer extends React.Component {
                 />
                 </fieldset>
           </form>
+          <Form onSubmit={this.showHide} style={{display: this.state.showHidePostComposer ? 'none' : 'block' }}>
+          <input
+            type='submit'
+            value='Create Post'
+            text='Post'
+            className="btn btn-primary"
+          />
+          </Form>
         </Jumbotron>
         </div>
         </Grid>

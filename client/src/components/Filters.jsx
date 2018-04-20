@@ -36,7 +36,7 @@ export default class Filters extends React.Component{
                       </fieldset>
                     <fieldset className="form-group">
                         <input
-                        className='sortbutton'
+                        className='btn btn-primary'
                         type='submit'
                         value='Submit'
                         text='Sort'

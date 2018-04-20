@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Jumbotron, Grid, Row, Col, Image, Button, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap'
+import { Alert, Jumbotron, Grid, Row, Col, Image, Button, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap'
 import { BrowserRouter as Router,  Route, Link} from 'react-router-dom'
 import './Signup.css';
 
@@ -10,7 +10,9 @@ export default class Signup extends Component {
       firstName: '',
       lastName: '',
       email: '',
-      password: ''
+      password: '',
+      msg: null,
+      alertStatus: null
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -48,7 +50,13 @@ export default class Signup extends Component {
     .then(res => {
       return res.json()
     })
-    .then(res => this.props.history.push(res.redirectUrl));
+    .then(res => {
+      if (res.msg){
+        console.log('Msg: '+res.msg)
+        this.setState({ msg: res.msg })
+        this.setState({ alertStatus: res.alertStatus })
+      }else {this.props.history.push(res.redirectUrl)}
+    });
   }
 
   
@@ -126,7 +134,8 @@ export default class Signup extends Component {
           placeholder="Send message"
         />
         </fieldset>
-         </form>
+      </form>
+      <Alert bsStyle={this.state.alertStatus}>{this.state.msg}</Alert>
       </Jumbotron>
       </div>
      </Grid>

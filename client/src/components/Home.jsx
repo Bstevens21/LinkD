@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 import { Jumbotron, Grid, Row, Col, Image, Button } from 'react-bootstrap'
 import './Home.css';
 import PostComposer from'./PostComposer';
@@ -13,7 +13,8 @@ export default class Home extends Component{
                <h1 className="welcome">Welcome to Linkd!</h1>
                <PostComposer />
                <Filters />
-               <Post />
+               <Route exact path ="/home" component ={Post} />
+               <Route path ="/home/:sort" component ={Post} />
                 </div>
             </Grid>
             
