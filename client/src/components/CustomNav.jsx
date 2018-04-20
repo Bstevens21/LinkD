@@ -13,8 +13,8 @@ export default class CustomNav extends Component{
     }
 
     componentWillMount() {
-        console.log(this.props.location.pathname == '/home')
-        if (this.props.location.pathname == '/home'){
+        console.log(this.props.location.pathname.includes('home'))
+        if (this.props.location.pathname.includes('home')){
             this.setState({
                 showLogout: true
             })
