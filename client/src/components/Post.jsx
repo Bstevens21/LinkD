@@ -26,7 +26,7 @@ export default class Post extends Component{
             fetch('/api/allPosts')
             .then(res => res.json())
             .then(data => {
-                this.setState({ posts: data.post.sort(function(a ,b){return a.postStartTime.slice(8,10) - b.postStartTime.slice(8,10)})})
+                // this.setState({ posts: data.post.sort(function(a ,b){return a.postStartTime.slice(8,10) - b.postStartTime.slice(8,10)})})
             })
         }
     }
@@ -47,9 +47,11 @@ export default class Post extends Component{
                         <Grid>
                             <div className="post-wrapper">
                                     <div className="post">
-                                       <Link to="/">
-                                            <Button bsStyle="secondary" className="interested"> I'm interested</Button>
-                                        </Link>
+                            
+                                       <form onSubmit={this.handleSubmit}>
+                                            <input id="prodId" name="prodId" type="hidden" value={anObjectMapped.postTitle}/>
+                                            <input type="submit" value="I'm Interested" onChange={this.handleInputChange} className="interested"/>
+                                        </form>
                                         <h1>{anObjectMapped.postTitle}</h1>
                                         <p>{anObjectMapped.postBody}</p>
                                         <h6>{anObjectMapped.postCategory.charAt(0).toUpperCase()+anObjectMapped.postCategory.slice(1)}</h6>
