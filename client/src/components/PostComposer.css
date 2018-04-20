@@ -1,9 +1,29 @@
 textarea{
     width: 100%;
+    color:#685c46;
+}
+#title{
+	width:100%;
+}
+
+#description{
+	height:100px;
 }
 
 select{
     width: 100%;
+    height: 40px;
+    background-color:white;
+    font-size:16px;
+}
+
+.react-datepicker{
+	font-size:11px;
+}
+
+select:hover{
+	background-color:#e3582a;
+	color:white;
 }
 .Datepicker{
     width:100%;
@@ -11,8 +31,23 @@ select{
 input{
     padding: 5px;
     margin-top: 10px;
+    color:#685c46;
 }
 
 fieldset{
 	width:100%;
+}
+
+.createBtn{
+	width: 15%;
+	margin-left: 40%;
+}
+
+.welcometext{
+	text-align: center;
+	margin-left: -10px;
+}
+
+ul.react-datepicker__time-list{
+	padding:0;
 }

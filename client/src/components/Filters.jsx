@@ -55,7 +55,7 @@ export default class Filters extends React.Component{
           <form onSubmit={this.handleSubmit}>
             <fieldset className="form-group">
               <label htmlFor="sortBy" title ="Sort by:" />
-               Filter By:
+               <h3>Filter By:</h3>
             </fieldset>
               <fieldset className ="form-group">
                 <select

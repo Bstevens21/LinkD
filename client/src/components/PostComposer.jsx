@@ -79,11 +79,11 @@ export default class PostComposer extends React.Component {
     <Grid>
     <div className="composercontainer">
        <Jumbotron>
-        <h2>Create a Post!</h2>
+        <h2 className="welcometext">Create a Post!</h2>
             <form style={{display: this.state.showHidePostComposer ? 'block' : 'none' }} onSubmit={this.handleSubmit}>
                 <fieldset className="form-group">
                    <label htmlFor="title" title="Title:" />
-                   Title:
+                   <h3>Title:</h3>
                     <input
                      id='title'
                       className='title'
@@ -96,7 +96,7 @@ export default class PostComposer extends React.Component {
                 </fieldset>
                 <fieldset className="form-group">
                    <label htmlFor="description" title="Description:" />
-                   Description:
+                   <h3>Description:</h3>
                     <textarea
                      id='description'
                       className='description'
@@ -109,7 +109,7 @@ export default class PostComposer extends React.Component {
                 </fieldset>
                 <fieldset className="form-group">
                    <label htmlFor="location" title="Location:" />
-                   Location:
+                   <h3>Location:</h3>
                     <textarea
                      id='location'
                       className='location'
@@ -122,7 +122,7 @@ export default class PostComposer extends React.Component {
                 </fieldset>
                 <fieldset className="form-group">
                    <label htmlFor="catlist" title="Category:" />
-                   Category:
+                   <h3>Category:</h3>
                     <select
                       id='category'
                       className='category'
@@ -144,13 +144,15 @@ export default class PostComposer extends React.Component {
                 </fieldset>
                 <fieldset className="form-group">
                   <label htmlFor="date" title="Date:" />
-                  Date and time of activity:
+                  <h3>Date and time of activity:</h3>
                     <DatePicker
-                      className="Datepicker"
+                      popperClassName="Datepicker"
                       selected={this.state.when}
                       onChange={this.handleTimeChange}
                       showTimeSelect
-                      dateFormat="LLL" />
+                      dateFormat="LLL" 
+                        />
+
                 </fieldset>
                 <fieldset>
                 <input
@@ -161,15 +163,15 @@ export default class PostComposer extends React.Component {
                 />
                 </fieldset>
           </form>
-          <Form onSubmit={this.showHide} style={{display: this.state.showHidePostComposer ? 'none' : 'block' }}>
+        </Jumbotron>
+        <Form onSubmit={this.showHide} style={{display: this.state.showHidePostComposer ? 'none' : 'block' }}>
           <input
             type='submit'
             value='Create Post'
             text='Post'
-            className="btn btn-primary"
+            className="createBtn btn-primary"
           />
           </Form>
-        </Jumbotron>
         </div>
         </Grid>
     )

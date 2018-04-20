@@ -1,12 +1,13 @@
 const userController = require('../controllers').users;
 const postController = require('../controllers').posts;
 const User = require('../models').User;
+const nodemailer = require('nodemailer');
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
     message: 'Welcome to the Linkd API!',
   }));
-
+  app.post('/api/createPost', postController.create);
   app.post('/api/createUser', userController.create);
   app.post('/api/signInUser', userController.signIn);
   app.get('/api/allPosts', postController.getPost);
@@ -25,12 +26,8 @@ module.exports = (app) => {
         res.json(updatedOwner);
       });
   });
-  app.get('/api/interested/:postTitle', function(req,res){
-    const random = require('randomstring');
-    const nodemailer = require('nodemailer');
-    
-    const postTitle = req.body.title;
-    
+  app.post('/api/interested', function(req,res){
+   
     // create reusable transporter object using the default SMTP transport
     var transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -43,21 +40,20 @@ module.exports = (app) => {
     // setup e-mail data with unicode symbols
     var mailOptions = {
         from: '"LinkD" <LinkDteam1@gmail.com>', // sender address
-        to: 'platinumwd1@gmail.com', // list of receivers
+        to: 'dpowell@mavs.coloradomesa.edu', // list of receivers
         subject: 'Someone is interested in your activity', // Subject line
-        text: 'Blake Stevens is interested in attending your ' + postTitle + ' activity! Contact Blake at bwstevens@mavs.coloradomesa.edu.', // plaintext body
-        html: '<b></b>' // html body
+        html: 'Blake Stevens is interested in attending your Tennis on Saturday activity! Contact Blake at bwstevens@mavs.coloradomesa.edu.' // html body
     };
 
     transporter.sendMail(mailOptions, function(error, info){
       if(error){
           return console.log(error);
       }
-      console.log('Message sent: ' + info.response);
-  })
+      return console.log('Message sent: ' + info.response);
+    });
      
     
   });
-  app.post('/api/createPost', postController.create);
+
   app.post('/api/link', postController.link);
 };

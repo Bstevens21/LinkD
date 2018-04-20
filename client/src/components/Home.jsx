@@ -10,7 +10,8 @@ export default class Home extends Component{
         return(
             <Grid>
                <div className="wrapper">
-               <h1 className="welcome">Welcome to Linkd!</h1>
+               <Button className="logoutBtn" componentClass={Link} to ="/landing" onClick={this.onClickHandler}>Logout</Button>
+               <h1 className="welcome">Welcome to LinkD!</h1>
                <PostComposer />
                <Route path ="/home" component ={Filters} />
                <Route exact path ="/home" component ={Post} />

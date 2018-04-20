@@ -64,7 +64,7 @@ export default class Signin extends Component {
       <form onSubmit={this.handleSubmit}>
         <fieldset className="form-group">
           <label htmlFor="formName" title="Email:" />
-          Email:
+          <h3>Email:</h3>
           <input            
             id="formName"
             className="form-input"
@@ -76,7 +76,7 @@ export default class Signin extends Component {
         </fieldset>
         <fieldset className="form-group">
           <label htmlFor="formPassword" title="Password:" />
-          Password:
+          <h3>Password:</h3>
           <input
             id="formPassword"
             ref="myInput"
@@ -89,7 +89,7 @@ export default class Signin extends Component {
         <fieldset>
         <input
           id="formButton"
-          className="btn btn-primary"
+          className="signinBtn btn-primary"
           type="submit"
           placeholder="Sign In"
         />

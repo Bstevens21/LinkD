@@ -7,10 +7,11 @@ export default class Landing extends Component {
     render(){
         return(
             <Grid>
-            <div className="wrapper">
+            <div className="landingwrapper">
               <Jumbotron>
-                  <h1>Welcome to Linkd!</h1>
-                    <h3>Sign in or Sign up to get started</h3>
+                  <h1>Welcome to LinkD!</h1>
+                  <hr />
+                    <h2>Sign in or Sign up to get started</h2>
               </Jumbotron>
                <div className="btn-wrapper">
                     <Button bStyle = "primary" className="Signin btn-primary" componentClass={Link} to ="/signin"> Sign In</Button>

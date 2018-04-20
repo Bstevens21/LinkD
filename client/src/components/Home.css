@@ -17,19 +17,32 @@
     background-color:#e3582a;
     float:left;
     margin-bottom:50px;
-}
-
-.interested{
-    background-color:#73bbad;
-    color: brown;
-    width: 150px;
-    height: auto;
-    font-size: 10px;
-    float: right;
-    border-radius:10px;
+    color:white;
+    font-size:16px;
 }
 .welcome{
     margin: 0 auto;
     text-align: center;
     margin: 10px;
 }
+
+p{
+    font-size:14px;
+}
+
+.logoutBtn{
+    position: absolute;
+    background-image:none;
+    margin-top: -78px;
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    background-color:#e3582a;
+    float:left;
+    color:white;
+    font-size: 16px;
+    z-index:1;
+    margin-left: 65%;
+}
+

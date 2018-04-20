@@ -11,8 +11,8 @@ export default class Signup extends Component {
       lastName: '',
       email: '',
       password: '',
-      msg: null,
-      alertStatus: null
+      msg: 'We will send you a verification email once you sign up! Please follow the included link.',
+      alertStatus: 'primary'
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -32,7 +32,6 @@ export default class Signup extends Component {
 
   handleSubmit(event) {
 
-    alert('Hello, ' + this.state.firstName + '! Please check your email for a verification link.');
     event.preventDefault();
     fetch('/api/createUser', {
       method: 'POST',
@@ -69,7 +68,7 @@ export default class Signup extends Component {
      <form onSubmit={this.handleSubmit}>
         <fieldset className="form-group">
           <label htmlFor="firstName" title="First Name:" />
-          First Name:
+          <h3>First Name:</h3>
           <input            
             id="firstName"
             className="form-input"
@@ -81,7 +80,7 @@ export default class Signup extends Component {
         </fieldset>
         <fieldset className="form-group">
           <label htmlFor="lastName" title="First Name:" />
-          Last Name:
+          <h3>Last Name:</h3>
           <input            
             id="lastName"
             className="form-input"
@@ -93,7 +92,7 @@ export default class Signup extends Component {
         </fieldset>
         <fieldset className="form-group">
           <label htmlFor="formEmail" title="School Email:" />
-          School Email:
+          <h3>School Email:</h3>
           <input
             id="formEmail"
             ref="myInput"
@@ -105,7 +104,7 @@ export default class Signup extends Component {
         </fieldset>
         <fieldset className="form-group">
           <label htmlFor="formPassword" title="Password:" />
-          Password:
+          <h3>Password:</h3>
           <input
             id="formPassword"
             ref="myInput"
@@ -117,7 +116,7 @@ export default class Signup extends Component {
         </fieldset>
         <fieldset className="form-group">
           <label htmlFor="formConfirmPassword" title="Confirm Password:" />
-          Confirm Password:
+          <h3>Confirm Password:</h3>
           <input
             id="formConfirmPassword"
             ref="myInput"
@@ -131,7 +130,7 @@ export default class Signup extends Component {
           id="formButton"
           className="btn btn-primary"
           type="submit"
-          placeholder="Send message"
+          placeholder="Sign Up"
         />
         </fieldset>
       </form>

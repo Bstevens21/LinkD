@@ -13,3 +13,11 @@ html, body{
 *{
     font-family: 'Montserrat', sans-serif;
 }
+
+h1{
+	font-weight: bold;
+}
+
+h2, h3, h4{
+	font-weight:medium;
+}

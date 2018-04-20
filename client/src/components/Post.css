@@ -1,34 +1,62 @@
-.btn-secondary{
-    margin-top:25px;
-    margin-right: 20px;
-    margin-bottom:10px;
+
+.interested{
+    background-color:#73bbad;
     color: white;
+    width: 150px;
+    height: auto;
+    font-size: 14px;
+    float: right;
+    border-radius:10px;
 }
+
+.interested:hover{
+    background-color:#e3582a;
+}
+
+.interested:visited{
+    background-color:#e3582a;
+}
+
 .post-wrapper{
     margin-top: 2em;
     margin: 0 auto;
     padding: 15px 15px;
-    margin-bottom: 2em;
 }
 
 .post{
     width: 60%;
     border: 2px solid #685c46;
     border-radius:2;
-    padding: 15px 15px;
+    padding: 25px 25px;
     background-color:white;
     color: #73bbad;
     margin: 0 auto;
-    margin-top: 40px;
+    margin-top: 10px;
 }
 
 .post p{
-    font-size:15px;
+    font-size:20px;
+    color: #685c46;
+}
+
+hr{
+    border: .5px solid #e3582a;
 }
 
 h6{
-    font-size:15px;
+    font-size:18px;
     color: #685c46;
     display:inline-block;
     margin-right:10px;
+}
+
+.postDetails{
+    display:block;
+    text-align:left;
+}
+
+span{
+    font-size:18px;
+    font-variant:small-caps;
+    color:#e3582a; 
 }

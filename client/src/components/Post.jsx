@@ -7,7 +7,8 @@ export default class Post extends Component{
     constructor(props) {
         super(props);
         this.state = {
-          posts: []
+          posts: [],
+
         };
     }
 
@@ -16,6 +17,7 @@ export default class Post extends Component{
     }
 
     componentWillMount() {
+        console.log(this.props.match.params.sort)
         if (this.props.match.params.sort){
             fetch('/api/allPosts')
             .then(res => res.json())
@@ -26,9 +28,19 @@ export default class Post extends Component{
             fetch('/api/allPosts')
             .then(res => res.json())
             .then(data => {
-                // this.setState({ posts: data.post.sort(function(a ,b){return a.postStartTime.slice(8,10) - b.postStartTime.slice(8,10)})})
+                this.setState({ posts: data.post.sort(function(a ,b){return a.postStartTime.slice(8,10) - b.postStartTime.slice(8,10)})})
             })
         }
+    }
+    handleSubmit(event) {
+        event.preventDefault();
+        fetch('/api/interested', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          }
+        })
     }
 
     formatDate(date) {
@@ -49,14 +61,18 @@ export default class Post extends Component{
                                     <div className="post">
                             
                                        <form onSubmit={this.handleSubmit}>
-                                            <input id="prodId" name="prodId" type="hidden" value={anObjectMapped.postTitle}/>
-                                            <input type="submit" value="I'm Interested" onChange={this.handleInputChange} className="interested"/>
+                                            <input type="submit" value="I'm Interested" className="interested"/>
                                         </form>
                                         <h1>{anObjectMapped.postTitle}</h1>
                                         <p>{anObjectMapped.postBody}</p>
-                                        <h6>{anObjectMapped.postCategory.charAt(0).toUpperCase()+anObjectMapped.postCategory.slice(1)}</h6>
-                                        <h6>{anObjectMapped.postLocation}</h6>
-                                        <h6>{this.formatDate(anObjectMapped.postStartTime)}</h6>
+                                        <hr />
+                                        <div className="postDetails">
+                                        <h6><span>category: </span>{anObjectMapped.postCategory.charAt(0).toUpperCase()+anObjectMapped.postCategory.slice(1)}</h6>
+                                        <br/>
+                                        <h6><span>where: </span>{anObjectMapped.postLocation}</h6>
+                                        <br/>
+                                        <h6><span>when: </span>{this.formatDate(anObjectMapped.postStartTime)}</h6>
+                                        </div>
                                     </div>
                                 </div>
                         </Grid>

@@ -1,4 +1,4 @@
-.container input {
+.form-input {
     width: 100%;
     clear: both;
 }
@@ -9,4 +9,16 @@
 
 .alert{
 	background-color:white;
+}
+.signinBtn{
+	margin-right: 16px;
+}
+
+input{
+	font-size:16px;
+}
+
+h3{
+	font-size: 17px;
+	margin-top: -10px;
 }
