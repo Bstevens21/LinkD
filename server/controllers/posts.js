@@ -39,5 +39,10 @@ module.exports = {
       res.status(400).send(error)
       console.log(error)
     });
+  },
+
+  link(req, res){
+    console.log('this:'+req.body.category)
+    return res.status(201).json({redirectUrl:'/home/'+req.body.category})
   }
 };

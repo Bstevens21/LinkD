@@ -12,7 +12,7 @@ export default class Home extends Component{
                <div className="wrapper">
                <h1 className="welcome">Welcome to Linkd!</h1>
                <PostComposer />
-               <Filters />
+               <Route path ="/home" component ={Filters} />
                <Route exact path ="/home" component ={Post} />
                <Route path ="/home/:sort" component ={Post} />
                 </div>

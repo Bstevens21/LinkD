@@ -29,7 +29,7 @@ class App extends Component {
     return (
       <Router>
           <div>
-             <Navbar />
+              <Route path ="/" component={Navbar} />
               <Route exact path ="/" component={Landing} />
               <Route path ="/home" component ={Home} />
               <Route path ="/signin" component ={Signin} />

@@ -26,4 +26,5 @@ module.exports = (app) => {
       });
   });
   app.post('/api/createPost', postController.create);
+  app.post('/api/link', postController.link);
 };

@@ -10,20 +10,25 @@ export default class Post extends Component{
           posts: []
         };
     }
+
+    filterByCategory(cat){
+        return (cat.postCategory == this.props.match.params.sort)
+    }
+
     componentWillMount() {
         if (this.props.match.params.sort){
-
-        }
-        fetch('/api/allPosts')
+            fetch('/api/allPosts')
             .then(res => res.json())
             .then(data => {
-                //this.setState({ posts: data.post.sort(function(a ,b){return a.postStartTime.slice(8,10) - b.postStartTime.slice(8,10)})})
-                this.setState({ posts: data.post.filter(function(cat, sort=this.props.match.params.sort){
-                    console.log(cat.postCategory === "game")
-                    return (cat.postCategory === sort)})})
-                console.log(data.post[0])
-                console.log(data.post[0].postStartTime.slice(8,10))
+                this.setState({ posts: data.post.filter(cat => this.filterByCategory(cat))})
             })
+        } else {
+            fetch('/api/allPosts')
+            .then(res => res.json())
+            .then(data => {
+                this.setState({ posts: data.post.sort(function(a ,b){return a.postStartTime.slice(8,10) - b.postStartTime.slice(8,10)})})
+            })
+        }
     }
 
     formatDate(date) {
@@ -37,7 +42,6 @@ export default class Post extends Component{
 
     render(){
         return(
-            console.log(this.props.match.params.sort),
             this.state.posts.map((anObjectMapped, index) => {
                 return (
                         <Grid>
