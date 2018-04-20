@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "pow",
-    "password": "",
-    "database": "LinkD",
+    "username": "postgres",
+    "password": "dbpass",
+    "database": "Linkd-dev",
     "host": "127.0.0.1",
     "port": 5432,
     "dialect": "postgres",
